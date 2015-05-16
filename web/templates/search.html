@@ -3,18 +3,28 @@
 {% block body %}
 
     <form action="{% url 'search' %}" method="POST">
+        {% csrf_token %}
         <select name="state">
-            <option value="any">Any</option>
+            <option value="">Any</option>
             {% for state in states %}
                 <option value="{{ state }}">{{ state }}</option>
             {% endfor %}
         </select>
         <select name="city">
-            <option value="any">Any</option>
+            <option value="">Any</option>
             {% for city in cities %}
                 <option value="{{ city }}">{{ city }}</option>
             {% endfor %}
         </select>
+        <input type="submit" value="Search">
     </form>
+
+    {% if results %}
+        {% for hospital in results %}
+            <p>
+                {{ hospital.name }}
+            </p>
+        {% endfor %}
+    {% endif %}
 
 {% endblock %}
