@@ -9,7 +9,7 @@ class hospital(models.Model):
     # Metrics
     quality = FloatField()
     atmosphere = FloatField()
-    cost = FloatField()
+    price = FloatField()
 
     # Address
     name = CharField(max_length=100)
