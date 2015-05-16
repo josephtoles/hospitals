@@ -8,7 +8,10 @@ def home(request):
 
 
 def search(request):
-    return render(request, 'base.html')
+    states = sorted(set([d['state'] for d in Hospital.objects.values('state')]))
+    cities = sorted(set([d['city'] for d in Hospital.objects.values('city')]))
+    context = {'states': states, 'cities': cities}
+    return render(request, 'search.html', context)
 
 
 def map(request):
@@ -21,7 +24,7 @@ def top(request):
 
 
 def nerd_stuff(request):
-    return render(request, 'base.html')
+    return render(request, 'nerd_stuff.html')
 
 
 def news(request):
