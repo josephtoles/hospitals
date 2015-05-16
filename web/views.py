@@ -23,7 +23,7 @@ def nerd_stuff(request):
 
 
 def news(request):
-    return render(request, 'base.html')
+    return render(request, 'news.html')
 
 
 def about(request):
