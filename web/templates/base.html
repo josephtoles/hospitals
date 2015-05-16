@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% block header %}
+        <header>
+            <a href="{% url 'search' %}">Search</a>
+            <a href="{% url 'map' %}">Map</a>
+            <a href="{% url 'top_100' %}">Top 100</a>
+            <a href="{% url 'nerd_stuff' %}">Nerd Stuff</a>
+            <a href="{% url 'news' %}">News</a>
+        </header>
+    {% endblock %}
+    {% block body %}
+        Important stuff goes here
+    {% endblock %}
+    {% block footer %}
+        <footer>
+            Contact
+            <a href="{% url 'about' %}">About</a>
+        </footer>
+    {% endblock %}
+</body>
+</html>
