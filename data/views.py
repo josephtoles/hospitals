@@ -6,7 +6,6 @@ import csv
 
 def upload_csv(request):
     if request.method == 'POST':
-        # import pdb; pdb.set_trace()
         csvfile = request.FILES['datafile']
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         listified = [row for row in spamreader]
@@ -23,9 +22,7 @@ def upload_csv(request):
             'Atmosphere',
             'Price']
         if listified[0] != CORRECT_VALUES:
-            import pdb; pdb.set_trace()
             return HttpResponseBadRequest()
-        # import pdb; pdb.set_trace()
         Hospital.objects.all().delete()
 
         def string_to_float(s):
