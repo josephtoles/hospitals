@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if not done %}
+        <form action="{% url 'upload_csv' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <p>
+                Select CSV to upload. Warning: This will erase all existing hospital data in the database!<br>
+                <input type="file" name="datafile" size="40">
+            </p>
+            <div>
+                <input type="submit" value="Send">
+            </div>
+        </form>
+    {% else %}
+        Thank you for the new data
+    {% endif %}
+</body>
+</html>
