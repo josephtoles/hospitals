@@ -20,11 +20,50 @@
     </form>
 
     {% if results %}
+        <table>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                Quality (evidence-based)
+            </td>
+            <td>
+                Quality (patient review-based)
+            </td>
+            <td>
+                Price
+            </td>
+        </tr>
         {% for hospital in results %}
-            <p>
-                {{ hospital.name }}
-            </p>
+            <tr>
+                <td>
+                    {{ hospital.name }}
+                </td>
+                <td>
+                    {% if hospital.quality %}
+                        {{ hospital.quality }}
+                    {% else %}
+                        Unknown
+                    {% endif %}
+                </td>
+                <td>
+                    {% if hospital.atmosphere %}
+                        {{ hospital.atmosphere }}
+                    {% else %}
+                        Unknown
+                    {% endif %}
+                </td>
+                <td>
+                    {% if hospital.price%}
+                        {{ hospital.price }}
+                    {% else %}
+                        Unknown
+                    {% endif %}
+                </td>
+            </tr>
         {% endfor %}
+        </table>
     {% endif %}
 
 {% endblock %}

@@ -33,7 +33,6 @@ def upload_csv(request):
 
         for i in range(1, len(listified)):
             datum =  listified[i]
-            # import pdb; pdb.set_trace()
             Hospital.objects.create(
                 provider_id=int(datum[0]),
                 name=datum[1],
