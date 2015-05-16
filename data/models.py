@@ -7,9 +7,9 @@ class Hospital(models.Model):
     phone_number = IntegerField()
 
     # Metrics
-    quality = FloatField()
-    atmosphere = FloatField()
-    price = FloatField()
+    quality = FloatField(null=True)
+    atmosphere = FloatField(null=True)
+    price = FloatField(null=True)
 
     # Address
     name = CharField(max_length=100)

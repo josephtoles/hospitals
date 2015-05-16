@@ -6,10 +6,11 @@ import csv
 
 def upload_csv(request):
     if request.method == 'POST':
+        # import pdb; pdb.set_trace()
         csvfile = request.FILES['datafile']
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         listified = [row for row in spamreader]
-        if listified[0] != [
+        CORRECT_VALUES = [
             'Provider ID',
             'Hospital Name',
             'Address',
@@ -20,9 +21,19 @@ def upload_csv(request):
             'Phone Number',
             'Quality',
             'Atmosphere',
-            'Price']:
+            'Price']
+        if listified[0] != CORRECT_VALUES:
+            import pdb; pdb.set_trace()
             return HttpResponseBadRequest()
+        # import pdb; pdb.set_trace()
         Hospital.objects.all().delete()
+
+        def string_to_float(s):
+            try:
+                return float(s)
+            except ValueError:
+                return None
+
         for i in range(1, len(listified)):
             datum =  listified[i]
             # import pdb; pdb.set_trace()
@@ -35,9 +46,9 @@ def upload_csv(request):
                 zip_code=int(datum[5]),
                 county_name=datum[6],
                 phone_number=int(datum[7]),
-                quality=float(datum[8]),
-                atmosphere=float(datum[9]),
-                price=float(datum[10]),
+                quality=string_to_float(datum[8]),
+                atmosphere=string_to_float(datum[9]),
+                price=string_to_float(datum[10]),
             )
         return render(request, 'upload_csv.html', {'done': True})
     return render(request, 'upload_csv.html', {'done': False})
