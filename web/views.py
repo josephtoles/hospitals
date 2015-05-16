@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from data.models import Hospital
 
 
 def home(request):
@@ -11,11 +12,12 @@ def search(request):
 
 
 def map(request):
-    return render(request, 'base.html')
+    return render(request, 'map.html')
 
 
-def top_100(request):
-    return render(request, 'base.html')
+def top(request):
+    context = {'hospitals': Hospital.objects.order_by('quality', 'atmosphere', 'price').all()}
+    return render(request, 'top.html', context)
 
 
 def nerd_stuff(request):
