@@ -1,7 +1,28 @@
 from django.shortcuts import render
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.forms.models import model_to_dict
 from models import Hospital
 import csv
+import json
+
+
+def get_json(request):
+    #TODO remove code duplication
+    city = request.GET.get('city', None)
+    state = request.GET.get('state', None)
+    results_queryset = Hospital.objects.order_by('-quality')
+    results_queryset = results_queryset.filter(quality__gt=0)  # removes hospitals without data
+    results_queryset = results_queryset.filter(atmosphere__gt=0)  # removes hospitals without data
+    results_queryset = results_queryset.filter(price__gt=0)  # removes hospitals without data
+    if city:
+        results_queryset = results_queryset.filter(city=city)
+    if state:
+        results_queryset = results_queryset.filter(state=state)
+    results = results_queryset.all()
+    dict_results = [model_to_dict(result) for result in results]
+    string = json.dumps(dict_results)
+    return HttpResponse(string, content_type='application/json')
+
 
 
 def upload_csv(request):

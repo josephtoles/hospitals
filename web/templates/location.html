@@ -16,58 +16,8 @@ See: http://code.google.com/apis/maps/documentation/javascript/basics.html#Speci
 <script type="text/javascript"
     src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
 
-<script type="text/javascript"> 
-var siberia = new google.maps.LatLng(37.625364,-122.423905);
-var siberia2 = new google.maps.LatLng(38.625364,-123.423905);
-{% for hospital in hospitals %}
-var hospital{{ hospital.id }} = new google.maps.LatLng({{ hospital.lat }}, {{ hospital.lng }});
-{% endfor %}
-
-function initialize() {
-  var myOptions = {
-    zoom:19,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-{#  var infowindow = new google.maps.InfoWindow({#}
-{#          map: map,#}
-{#          position: siberia,#}
-{#          content: 'Location found using HTML5.'#}
-{#        });#}
-
-  var marker =  new google.maps.Marker({
-    position: siberia,
-    map: map,
-    title: "omt"
-  });
-
-  var infowindow = new google.maps.InfoWindow({
-      content: "some info for the window"
-  });
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
-  });
-
-    {% for hospital in hospitals %}
-        var marker{{ hospital.id }} = new google.maps.Marker({
-            position: hospital{{ hospital.id }},
-            map: map,
-            title: "{{ hospital.name }}"
-        });
-    {% endfor %}
-
-  var marker2 =  new google.maps.Marker({
-    position: siberia2,
-    map: map,
-    title: "omt"
-  });
-  map.setCenter(siberia);
-
-}
-  google.maps.event.addDomListener(window, 'load', initialize);
-    </script> 
+<script type="text/javascript"
+    src="{% static 'js/location_template.js' %}"></script>
   </head> 
   <body> 
     <div id="map_canvas"></div> 
