@@ -4,68 +4,72 @@
 
     <form action="{% url 'search' %}" method="POST">
         {% csrf_token %}
-        State
-        <select name="state">
-            <option value="">Any</option>
-            {% for state in states %}
-                <option value="{{ state }}" {% if state == selected_state %}SELECTED{% endif %}>{{ state }}</option>
-            {% endfor %}
-        </select>
-        City
-        <select name="city">
-            <option value="">Any</option>
-            {% for city in cities %}
-                <option value="{{ city }}" {% if city == selected_city %}SELECTED{%endif %}>{{ city }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Search">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    State
+                    <select name="state">
+                        <option value="">Any</option>
+                        {% for state in states %}
+                            <option value="{{ state }}" {% if state == selected_state %}SELECTED{% endif %}>{{ state }}</option>
+                        {% endfor %}
+                    </select>
+                    City
+                    <select name="city">
+                        <option value="">Any</option>
+                        {% for city in cities %}
+                            <option value="{{ city }}" {% if city == selected_city %}SELECTED{%endif %}>{{ city }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Search" class="btn btn-info">
+                </div>
+            </div>
+        </div>
     </form>
 
     {% if results %}
-        <table>
-        <tr>
-            <td>
-                Name
-            </td>
-            <td>
-                Safety
-            </td>
-            <td>
-                Comfort
-            </td>
-            <td>
-                Price
-            </td>
-        </tr>
-        {% for hospital in results %}
-            <tr>
-                <td>
-                    <a href="{% url 'hospital' id=hospital.id %}">{{ hospital.name.title }}</a>
-                </td>
-                <td>
-                    {% if hospital.quality %}
-                        {{ hospital.round_quality }}
-                    {% else %}
-                        Unknown
-                    {% endif %}
-                </td>
-                <td>
-                    {% if hospital.atmosphere %}
-                        {{ hospital.round_atmosphere }}
-                    {% else %}
-                        Unknown
-                    {% endif %}
-                </td>
-                <td>
-                    {% if hospital.price%}
-                        {{ hospital.round_price }}
-                    {% else %}
-                        Unknown
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-        </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <table class="ui-hospital-results">
+                        <tr class="ui-hospital-headers">
+                            <td>Name</td>
+                            <td>Safety</td>
+                            <td>Comfort</td>
+                            <td>Price</td>
+                        </tr>
+                        {% for hospital in results %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'hospital' id=hospital.id %}">{{ hospital.name.title }}</a>
+                            </td>
+                            <td>
+                                {% if hospital.quality %}
+                                    {{ hospital.round_quality }}
+                                {% else %}
+                                    Unknown
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if hospital.atmosphere %}
+                                    {{ hospital.round_atmosphere }}
+                                {% else %}
+                                    Unknown
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if hospital.price%}
+                                    {{ hospital.round_price }}
+                                {% else %}
+                                    Unknown
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
     {% endif %}
 
 {% endblock %}
