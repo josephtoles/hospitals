@@ -10,12 +10,12 @@ html, body {
     float: right;
 }
 
-@media print {
-  html, body {
-    height: auto;
-  }
+/*@media print {*/
+  /*html, body {*/
+    /*height: auto;*/
+  /*}*/
 
-#map_canvas {
-height: 650px;
-}
-}
+/*#map_canvas {*/
+/*height: 650px;*/
+/*}*/
+/*}*/

@@ -3,8 +3,22 @@
     height: 60px;
 }
 
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map_canvas {
+  height: 100%;
+  width: 30%;
+  float: right;
+}
+
 body{
-    padding-top: 80px;
+  padding-top: 80px;
+  height: 100%;
+  margin: 0;
 }
 
 .ui-logo{
@@ -17,8 +31,10 @@ body{
 }
 
 .ui-hospital-results{
-    width: 80%;
+    width: 30%;
     margin-top: 50px;
+    float: left;
+    padding: 0;
 }
 
 .ui-hospital-headers{
