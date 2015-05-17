@@ -4,11 +4,6 @@ from models import ContactMessage
 from django.shortcuts import get_object_or_404
 
 
-def home(request):
-    #TODO pick the best page to show here instead
-    return render(request, 'base.html')
-
-
 def hospital(request, id):
     hospital = get_object_or_404(Hospital, id=id)
     return render(request, 'hospital.html', {'hospital': hospital})
@@ -24,7 +19,7 @@ def contact(request):
         return render(request, 'contact.html', {'message_sent': False})
 
 
-def search(request):
+def home(request):
     selected_state = None
     selected_city = None
     if request.method == 'POST':

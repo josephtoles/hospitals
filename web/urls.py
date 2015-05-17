@@ -3,7 +3,7 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns(
     'web.views',
-    url(r'^search', 'search', name='search'),
+    url(r'^/$', 'home', name='home'),
     url(r'^map', 'map', name='map'),
     # url(r'^top', 'top', name='top'),
     url(r'^contact', 'contact', name='contact'),
