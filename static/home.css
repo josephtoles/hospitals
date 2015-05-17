@@ -1,24 +1,17 @@
 .ui-nav-container {
     background-color: #42A6ED;
     height: 60px;
-}
-
-html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-#map_canvas {
-  height: 100%;
-  width: 30%;
-  float: right;
+    margin: 0;
 }
 
 body{
-  padding-top: 80px;
-  height: 100%;
-  margin: 0;
+    padding-top: 80px;
+}
+
+#map_canvas {
+    margin-top: 50px;
+  height: 600px;
+  width: 50%;
 }
 
 .ui-logo{
@@ -31,7 +24,7 @@ body{
 }
 
 .ui-hospital-results{
-    width: 30%;
+    width: 70%;
     margin-top: 50px;
     float: left;
     padding: 0;
