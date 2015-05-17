@@ -3,7 +3,7 @@ from django.db.models import IntegerField, CharField, FloatField
 
 
 class Hospital(models.Model):
-    provider_id = IntegerField()  # Used by Medicare. Distinct from database primary key.
+    provider_id = IntegerField(unique=True)  # Used by Medicare. Distinct from database primary key.
     phone_number = IntegerField()
 
     # Metrics
@@ -26,6 +26,15 @@ class Hospital(models.Model):
 
     def __unicode__(self):
         return self.name or 'anonymous'
+
+    def round_quality(self):
+        return int(self.quality * 100)
+
+    def round_atmosphere(self):
+        return int(self.atmosphere * 100)
+
+    def round_price(self):
+        return int(self.price * 100)
 
 
 class RequestsRecord(models.Model):

@@ -11,6 +11,7 @@ import json
 API_KEY = 'AIzaSyBBSCmmD23WqE0414ruTyXWQwHGKO4e2_8'
 MAX_DAILY_REQUESTS = 2500
 
+
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
