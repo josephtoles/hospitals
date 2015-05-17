@@ -40,7 +40,7 @@
         {% for hospital in results %}
             <tr>
                 <td>
-                    {{ hospital.name }}
+                    {{ hospital.name.title }}
                 </td>
                 <td>
                     {% if hospital.quality %}
