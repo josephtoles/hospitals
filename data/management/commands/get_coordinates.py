@@ -43,6 +43,12 @@ class Command(BaseCommand):
                 print 'coordinates unknown for {}'.format(hospital.name)
                 hospital.coordinates_unknown = True
                 hospital.save()
+            elif parsed['status'] == "OVER_QUERY_LIMIT":
+                print 'You have exceeded your daily request quota for this API.'
+                record = RequestsRecord.objects.get(date=now().date())
+                record.requests = MAX_DAILY_REQUESTS
+                record.save()
+                return
             elif parsed['status'] != 'OK':
                 print 'return status is not "OK"'
                 print 'output is %s' % text
