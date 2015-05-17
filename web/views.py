@@ -1,10 +1,21 @@
 from django.shortcuts import render
 from data.models import Hospital
+from models import ContactMessage
 
 
 def home(request):
     #TODO pick the best page to show here instead
     return render(request, 'base.html')
+
+
+def contact(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        message = request.POST['message']
+        ContactMessage.objects.create(email=email, message=message)
+        return render(request, 'contact.html', {'message_sent': True})
+    else:
+        return render(request, 'contact.html', {'message_sent': False})
 
 
 def search(request):

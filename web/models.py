@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+class ContactMessage(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()
+    email = models.EmailField()

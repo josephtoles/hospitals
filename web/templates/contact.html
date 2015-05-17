@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% if message_sent %}
+        Thanks for getting in touch. We'll get back to you within 3 business days.
+    {% else %}
+        <form action="{% url 'contact' %}" method="POST">
+            {% csrf_token %}
+            <div>
+                Email
+                <input type="email" name="email">email</input>
+            </div>
+            <div>
+                Message
+                <br>
+                <textarea cols="40" rows="5" name="message">Message goes here.</textarea>
+            </div>
+            <input type="submit" value="Send">
+        </form>
+    {% endif %}
+{% endblock %}
