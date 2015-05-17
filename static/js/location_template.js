@@ -45,23 +45,13 @@ function initialize() {
           console.log(list_from_json[0]);
 
           for(var i=0; i<list_from_json.length; i++) {
-              if (i >= 0 && i < 26)
-              {
-                  var letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i];
-                  var marker = new google.maps.Marker({
-                      position: new google.maps.LatLng(list_from_json[i]['lat'], list_from_json[i]['lng']),
-                      map: map,
-                      title: 'tooltip text',
-                      icon: "http://maps.google.com/mapfiles/marker" + letter + ".png"
-                  });
-              }
-              else {
-                  var marker = new google.maps.Marker({
-                      position: new google.maps.LatLng(list_from_json[i]['lat'], list_from_json[i]['lng']),
-                      map: map,
-                      title: 'tooltip text',
-                  });
-              }
+              var letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i];
+              var marker = new google.maps.Marker({
+                  position: new google.maps.LatLng(list_from_json[i]['lat'], list_from_json[i]['lng']),
+                  map: map,
+                  title: 'tooltip text',
+                  icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + i + "|FF0000|000000"
+              });
               /*
               google.maps.event.addListener(marker, 'click', function () {
                 var infowindow = new google.maps.InfoWindow({ content: 'hospital info' });
