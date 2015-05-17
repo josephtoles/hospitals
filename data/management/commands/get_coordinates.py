@@ -26,7 +26,7 @@ class Command(BaseCommand):
             except RequestsRecord.DoesNotExist:
                 RequestsRecord.objects.create(date=now().date(), requests=1)
 
-            hospital = Hospital.objects.filter(lat=None, lng=None).first()  # hospital to update
+            hospital = Hospital.objects.filter(lat=None, lng=None, coordinates_unknown=False).first()  # hospital to update
             if hospital is None:
                 print 'All Hospitals have coordinates'
                 return True
@@ -37,14 +37,21 @@ class Command(BaseCommand):
             response = urlopen(url)
             text = response.read()
             parsed = json.loads(text)
-            if parsed['status'] != 'OK':
+            if parsed['status'] == 'ZERO_RESULTS':
+                print 'coordinates unknown for {}'.format(hospital.name)
+                hospital.coordinates_unknown = True
+                hospital.save()
+            elif parsed['status'] != 'OK':
                 print 'return status is not "OK"'
                 print 'output is %s' % text
+                import pdb
+                pdb.set_trace()
                 return
-            lat = parsed['results'][0]['geometry']['location']['lat']
-            lng = parsed['results'][0]['geometry']['location']['lng']
-            print 'got coordinates ({}, {}) for hospital {}'.format(lat, lng, hospital.name)
-            hospital.lat = lat
-            hospital.lng = lng
-            hospital.save()
-            time.sleep(0.5)
+            else:
+                lat = parsed['results'][0]['geometry']['location']['lat']
+                lng = parsed['results'][0]['geometry']['location']['lng']
+                print 'got coordinates ({}, {}) for hospital {}'.format(lat, lng, hospital.name)
+                hospital.lat = lat
+                hospital.lng = lng
+                hospital.save()
+            time.sleep(0.25)

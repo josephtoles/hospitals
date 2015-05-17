@@ -22,6 +22,7 @@ class Hospital(models.Model):
     # Coordinates
     lat = FloatField(null=True)
     lng = FloatField(null=True)
+    coordinates_unknown = models.BooleanField(default=False)  # set to true of coordinate lookup fails
 
     def __unicode__(self):
         return self.name or 'anonymous'
