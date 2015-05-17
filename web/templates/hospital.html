@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
 {% block body %}
-{{ hospital.name.title }}
+    <p>
+        {{ hospital.name.title }}
+    </p>
+    <p>
+        {{ hospital.address.title }}
+    </p>
+    <p>
+        {{ hospital.city.title }}, {{ hospital.state }} {{ hospital.zip_code }}
+    </p>
 {% endblock %}
