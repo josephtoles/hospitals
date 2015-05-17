@@ -40,7 +40,7 @@
         {% for hospital in results %}
             <tr>
                 <td>
-                    {{ hospital.name.title }}
+                    <a href="{% url 'hospital' id=hospital.id %}">{{ hospital.name.title }}</a>
                 </td>
                 <td>
                     {% if hospital.quality %}
