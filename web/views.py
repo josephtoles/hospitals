@@ -13,7 +13,10 @@ def search(request):
     if request.method == 'POST':
         city = request.POST['city']
         state = request.POST['state']
-        results_queryset = Hospital.objects
+        results_queryset = Hospital.objects.order_by('-quality')
+        results_queryset = results_queryset.filter(quality__gt=0)  # removes hospitals without data
+        results_queryset = results_queryset.filter(atmosphere__gt=0)  # removes hospitals without data
+        results_queryset = results_queryset.filter(price__gt=0)  # removes hospitals without data
         if city:
             results_queryset = results_queryset.filter(city=city)
             selected_city = city
