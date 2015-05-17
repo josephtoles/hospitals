@@ -4,12 +4,14 @@
 
     <form action="{% url 'search' %}" method="POST">
         {% csrf_token %}
+        State
         <select name="state">
             <option value="">Any</option>
             {% for state in states %}
                 <option value="{{ state }}" {% if state == selected_state %}SELECTED{% endif %}>{{ state }}</option>
             {% endfor %}
         </select>
+        City
         <select name="city">
             <option value="">Any</option>
             {% for city in cities %}
