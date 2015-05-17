@@ -76,4 +76,4 @@ def news(request):
 
 
 def about(request):
-    return render(request, 'base.html')
+    return render(request, 'about.html')
