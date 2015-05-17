@@ -19,5 +19,14 @@ class Hospital(models.Model):
     zip_code = IntegerField()
     county_name = CharField(max_length=20)
 
+    # Coordinates
+    lat = FloatField(null=True)
+    lng = FloatField(null=True)
+
     def __unicode__(self):
         return self.name or 'anonymous'
+
+
+class RequestsRecord(models.Model):
+    date = models.DateField(unique=True)
+    requests = IntegerField()
