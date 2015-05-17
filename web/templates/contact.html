@@ -4,18 +4,24 @@
     {% if message_sent %}
         Thanks for getting in touch. We'll get back to you within 3 business days.
     {% else %}
-        <form action="{% url 'contact' %}" method="POST">
-            {% csrf_token %}
-            <div>
-                Email
-                <input type="email" name="email">email</input>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h1 class="ui-contact">Contact Us</h1>
+                    <form action="{% url 'contact' %}" method="POST">
+                        {% csrf_token %}
+                        <div>
+                            <label class="col-sm-2 control-label ui-contact-label">Email</label>
+                            <input type="email" class="form-control" name="email"></input>
+                        </div>
+                        <div>
+                            <label class="col-sm-2 control-label ui-contact-label">Message</label>
+                            <textarea cols="40" rows="5" class="form-control" name="message">Message goes here.</textarea>
+                        </div>
+                        <input type="submit" value="Send" class="btn btn-info ui-contact-button">
+                    </form>
+                </div>
             </div>
-            <div>
-                Message
-                <br>
-                <textarea cols="40" rows="5" name="message">Message goes here.</textarea>
-            </div>
-            <input type="submit" value="Send">
-        </form>
+        </div>
     {% endif %}
 {% endblock %}

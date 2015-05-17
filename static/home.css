@@ -25,3 +25,23 @@ body{
     font-size: 18px;
     text-decoration: underline;
 }
+
+.ui-contact-label{
+    font-size: 18px;
+    margin-left: 15%;
+}
+
+.form-control{
+    width: 40%;
+    margin-bottom: 25px;
+}
+
+.ui-contact-button{
+    margin-left: 46%;
+    font-size: 18px;
+}
+
+.ui-contact{
+    text-align: center;
+    margin-bottom: 25px;
+}
