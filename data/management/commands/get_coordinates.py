@@ -16,6 +16,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         while(True):
             # TODO re-write this with get_object_or_create
+            # Check daily throttling
             try:
                 record = RequestsRecord.objects.get(date=now().date())
                 record.requests = record.requests + 1
@@ -26,6 +27,7 @@ class Command(BaseCommand):
             except RequestsRecord.DoesNotExist:
                 RequestsRecord.objects.create(date=now().date(), requests=1)
 
+            # Get data for a hospital
             hospital = Hospital.objects.filter(lat=None, lng=None, coordinates_unknown=False).first()  # hospital to update
             if hospital is None:
                 print 'All Hospitals have coordinates'

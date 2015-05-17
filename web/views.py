@@ -51,7 +51,8 @@ def search(request):
 
 
 def map(request):
-    return render(request, 'location.html')
+    context = {'hospitals': Hospital.objects.filter(lat__gt=0, lng__lt=0).all()}
+    return render(request, 'location.html', context)
     # return render(request, 'map.html')
 
 
