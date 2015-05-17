@@ -7,13 +7,13 @@
         <select name="state">
             <option value="">Any</option>
             {% for state in states %}
-                <option value="{{ state }}">{{ state }}</option>
+                <option value="{{ state }}" {% if state == selected_state %}SELECTED{% endif %}>{{ state }}</option>
             {% endfor %}
         </select>
         <select name="city">
             <option value="">Any</option>
             {% for city in cities %}
-                <option value="{{ city }}">{{ city }}</option>
+                <option value="{{ city }}" {% if city == selected_city %}SELECTED{%endif %}>{{ city }}</option>
             {% endfor %}
         </select>
         <input type="submit" value="Search">
