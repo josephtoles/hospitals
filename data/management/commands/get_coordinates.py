@@ -50,7 +50,8 @@ class Command(BaseCommand):
             else:
                 lat = parsed['results'][0]['geometry']['location']['lat']
                 lng = parsed['results'][0]['geometry']['location']['lng']
-                print 'got coordinates ({}, {}) for hospital {}'.format(lat, lng, hospital.name)
+                print ('got coordinates ({}, {}) for hospital {}. '.format(lat, lng, hospital.name) +
+                       '(requests remaining for today: {})'.format(str(MAX_DAILY_REQUESTS - record.requests)))
                 hospital.lat = lat
                 hospital.lng = lng
                 hospital.save()
