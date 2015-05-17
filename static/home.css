@@ -1,0 +1,27 @@
+.ui-nav-container {
+    background-color: #42A6ED;
+    height: 60px;
+}
+
+body{
+    padding-top: 80px;
+}
+
+.ui-logo{
+    margin-top: -5px;
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a{
+    color: white;
+}
+
+.ui-hospital-results{
+    width: 80%;
+    margin-top: 50px;
+}
+
+.ui-hospital-headers{
+    font-size: 18px;
+    text-decoration: underline;
+}

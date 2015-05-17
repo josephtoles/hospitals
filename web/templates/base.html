@@ -1,27 +1,44 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
     <head lang="en">
         <meta charset="UTF-8">
         <title></title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static "home.css" %}">
     </head>
+
     <body>
         {% block header %}
             <header>
-                <a href="{% url 'search' %}">Search</a>
-                <a href="{% url 'map' %}">Map</a>
-    {#            <a href="{% url 'top' %}">Top 100</a>#}
-                <a href="{% url 'nerd_stuff' %}">Nerd Stuff</a>
-                <a href="{% url 'news' %}">News</a>
+                <nav class="navbar navbar-default navbar-fixed-top ui-nav">
+                    <div class="container-fluid ui-nav-container">
+                        <a class="navbar-brand" href="/"><h2 class="ui-logo">InformedCare</h2></a>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{% url 'search' %}" class="ui-nav-link">Search</a></li>
+                            {#            <a href="{% url 'top' %}">Top 100</a>#}
+                            <li><a href="{% url 'about' %}" class="ui-nav-link">About Us</a></li>
+                            <li><a href="{% url 'contact' %}" class="ui-nav-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
             </header>
         {% endblock %}
         {% block body %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>hello friends</h1>
+                    </div>
+                </div>
+            </div>
             Important stuff goes here
         {% endblock %}
+
         {% block footer %}
-            <footer>
-                <a href="{% url 'contact' %}">Contact</a>
-                <a href="{% url 'about' %}">About Us</a>
-            </footer>
         {% endblock %}
     </body>
 </html>
