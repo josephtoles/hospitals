@@ -33,6 +33,7 @@
                 <div class="col-sm-6 text-center">
                     <table class="ui-hospital-results">
                         <tr class="ui-hospital-headers">
+                            <td></td>
                             <td>Name</td>
                             <td>Safety</td>
                             <td>Comfort</td>
@@ -40,6 +41,9 @@
                         </tr>
                         {% for hospital in results %}
                         <tr>
+                            <td>
+                                {{ forloop.counter }}
+                            </td>
                             <td>
                                 <a href="{% url 'hospital' id=hospital.id %}">{{ hospital.name.title }}</a>
                             </td>

@@ -16,6 +16,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         while(True):
+            # Google does this check for you
+            '''
             # TODO re-write this with get_object_or_create
             # Check daily throttling
             try:
@@ -27,6 +29,7 @@ class Command(BaseCommand):
                     return
             except RequestsRecord.DoesNotExist:
                 RequestsRecord.objects.create(date=now().date(), requests=1)
+            '''
 
             # Get data for a hospital
             hospital = Hospital.objects.filter(lat=None, lng=None, coordinates_unknown=False).first()  # hospital to update
@@ -46,9 +49,9 @@ class Command(BaseCommand):
                 hospital.save()
             elif parsed['status'] == "OVER_QUERY_LIMIT":
                 print 'You have exceeded your daily request quota for this API.'
-                record = RequestsRecord.objects.get(date=now().date())
-                record.requests = MAX_DAILY_REQUESTS
-                record.save()
+                # record = RequestsRecord.objects.get(date=now().date())
+                # record.requests = MAX_DAILY_REQUESTS
+                # record.save()
                 return
             elif parsed['status'] != 'OK':
                 print 'return status is not "OK"'
@@ -59,8 +62,7 @@ class Command(BaseCommand):
             else:
                 lat = parsed['results'][0]['geometry']['location']['lat']
                 lng = parsed['results'][0]['geometry']['location']['lng']
-                print ('got coordinates ({}, {}) for hospital {}. '.format(lat, lng, hospital.name) +
-                       '(requests remaining for today: {})'.format(str(MAX_DAILY_REQUESTS - record.requests)))
+                print ('got coordinates ({}, {}) for hospital {}. '.format(lat, lng, hospital.name))
                 hospital.lat = lat
                 hospital.lng = lng
                 hospital.save()
