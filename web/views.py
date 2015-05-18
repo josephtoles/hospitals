@@ -19,6 +19,10 @@ def contact(request):
         return render(request, 'contact.html', {'message_sent': False})
 
 
+def disclaimer(request):
+    return render(request, 'disclaimer.html')
+
+
 def home(request):
     selected_state = None
     selected_city = None
