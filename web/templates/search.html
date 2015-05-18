@@ -9,14 +9,14 @@
                 <div class="col-sm-12 text-center">
                     State
                     <select name="state">
-                        <option value="">Any</option>
+                        <option value="">ALL</option>
                         {% for state in states %}
                             <option value="{{ state }}" {% if state == selected_state %}SELECTED{% endif %}>{{ state }}</option>
                         {% endfor %}
                     </select>
                     City
                     <select name="city">
-                        <option value="">Any</option>
+                        <option value="">ALL</option>
                         {% for city in cities %}
                             <option value="{{ city }}" {% if city == selected_city %}SELECTED{%endif %}>{{ city }}</option>
                         {% endfor %}
@@ -68,7 +68,7 @@
                         {% endfor %}
                     </table>
                 </div>
-                <div class="col-sm-6 text-center" id="map_canvas"></div>
+                <div class="col-sm-6 text-center" id="map_canvas" city="{{ selected_city }}" state="{{ selected_state }}"></div>
             </div>
         </div>
     {% endif %}

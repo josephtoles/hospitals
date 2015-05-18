@@ -1,5 +1,17 @@
 function initialize() {
 
+  var scriptPram = document.getElementById('map_canvas');
+  var state = scriptPram.getAttribute('state');
+  if (state === 'None') {
+      state = '';
+  }
+  console.log(state);
+  var city = scriptPram.getAttribute('city');
+  if (city === 'None') {
+      city = '';
+  }
+  console.log(city);
+
   var myOptions = {
     zoom:8,
     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -37,8 +49,12 @@ function initialize() {
   map.setCenter(siberia);
   var xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
-  xobj.open('GET', 'data/get_json', true);
+  var target_url = 'data/get_json?city=' + city + '&state=' + state;
+    console.log(target_url);
+  xobj.open('GET', target_url, true);
   xobj.onreadystatechange = function () {
+      var total_lat = 0;
+      var total_lng = 0;
       if (xobj.readyState == 4) {
           var jsonTexto = xobj.responseText;
           var list_from_json = JSON.parse( jsonTexto );
@@ -46,6 +62,8 @@ function initialize() {
 
           for(var i=0; i<list_from_json.length; i++) {
               var letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i];
+              total_lat += list_from_json[i]['lat'];
+              total_lng += list_from_json[i]['lng'];
               var marker = new google.maps.Marker({
                   position: new google.maps.LatLng(list_from_json[i]['lat'], list_from_json[i]['lng']),
                   map: map,
@@ -59,9 +77,11 @@ function initialize() {
               });
               */
           }
-
       }
-  };
+      var center_lat = total_lat / list_from_json.length;
+      var center_lng = total_lng / list_from_json.length;
+      map.setCenter(new google.maps.LatLng(center_lat, center_lng));
+};
   xobj.send(null);
 
 }
