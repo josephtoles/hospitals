@@ -68,7 +68,7 @@ function initialize() {
                   position: new google.maps.LatLng(list_from_json[i]['lat'], list_from_json[i]['lng']),
                   map: map,
                   title: 'tooltip text',
-                  icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + i + "|FF0000|000000"
+                  icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + (i+1) + "|FF0000|000000"
               });
               /*
               google.maps.event.addListener(marker, 'click', function () {
