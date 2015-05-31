@@ -1,3 +1,5 @@
+# This is a sample file for creating your own local_settings.py file
+# This file is not actually used.
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATABASES = {
@@ -8,4 +10,3 @@ DATABASES = {
 }
 
 STATIC_URL = '/static/'
-print 'hit local'
