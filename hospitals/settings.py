@@ -93,7 +93,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'aa1wom6z8e493d6',
             'USER': 'master',
-            'PASSWORD': 'bedpennypeacockkiss',
+            'PASSWORD': 'afraidfredchair',
             'HOST': 'localhost',
             'PORT': '5432',
         }
@@ -153,8 +153,8 @@ STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
 try:
     from local_settings import *
-    print 'getting local settings'
+    # print 'getting local settings'
 except ImportError:
-    print 'local settings not found'
+    # print 'local settings not found'
     pass
 
