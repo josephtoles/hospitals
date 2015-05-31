@@ -118,7 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 
-#STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "www", "static")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
@@ -126,8 +126,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # MEDIA FILE (user uploaded files)
 MEDIA_ROOT = os.path.join(BASE_DIR, "..", "www", "media")
-#MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'
 
+#S3 configuration
+'''
 # S3 access
 AWS_STORAGE_BUCKET_NAME = '' #TODO add
 AWS_ACCESS_KEY_ID = ''  #TODO add
@@ -150,6 +152,7 @@ STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'review.custom_storages.StaticStorage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+'''
 
 try:
     from local_settings import *
