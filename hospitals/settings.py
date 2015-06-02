@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',  # user for S3
     'data',
     'web',
 )
@@ -129,11 +130,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "..", "www", "media")
 MEDIA_URL = '/media/'
 
 #S3 configuration
-'''
 # S3 access
-AWS_STORAGE_BUCKET_NAME = '' #TODO add
-AWS_ACCESS_KEY_ID = ''  #TODO add
-AWS_SECRET_ACCESS_KEY = ''  #TODO add
+AWS_STORAGE_BUCKET_NAME = 'hospitals-s3'
+AWS_ACCESS_KEY_ID = 'AKIAIUAVKDP4O4MVPNZQ'
+AWS_SECRET_ACCESS_KEY = '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'
 
 # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
 # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
@@ -152,7 +152,6 @@ STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'review.custom_storages.StaticStorage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-'''
 
 try:
     from local_settings import *
