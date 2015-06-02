@@ -127,7 +127,12 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # MEDIA FILE (user uploaded files)
 MEDIA_ROOT = os.path.join(BASE_DIR, "..", "www", "media")
-MEDIA_URL = '/media/'
+#MEDIA_URL = '/media/'
+# Tells browsers they can cash static files for a long time
+AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'Cache-Control': 'max-age=94608000',
+}
 
 #S3 configuration
 # S3 access
