@@ -150,12 +150,12 @@ STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'review.custom_storages.StaticStorage'
+STATICFILES_STORAGE = 'web.custom_storages.StaticStorage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
 MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = 'web.custom_storages.MediaStorage'
 
 try:
     from local_settings import *
