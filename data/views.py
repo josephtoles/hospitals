@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest
+from django.db.utils import DataError
 from django.forms.models import model_to_dict
 from models import Hospital
 import csv
@@ -68,18 +69,33 @@ def upload_csv(request):
                 hospital.price=string_to_float(datum[10])
                 hospital.save()
             except Hospital.DoesNotExist:
-                Hospital.objects.create(
-                    provider_id=int(datum[0]),
-                    name=datum[1],
-                    address=datum[2],
-                    city=datum[3],
-                    state=datum[4],
-                    zip_code=int(datum[5]),
-                    county_name=datum[6],
-                    phone_number=int(datum[7]),
-                    quality=string_to_float(datum[8]),
-                    atmosphere=string_to_float(datum[9]),
-                    price=string_to_float(datum[10]),
-                )
+                try:
+                    Hospital.objects.create(
+                        provider_id=int(datum[0]),
+                        name=datum[1],
+                        address=datum[2],
+                        city=datum[3],
+                        state=datum[4],
+                        zip_code=int(datum[5]),
+                        county_name=datum[6],
+                        phone_number=int(datum[7]),
+                        quality=string_to_float(datum[8]),
+                        atmosphere=string_to_float(datum[9]),
+                        price=string_to_float(datum[10]),
+                    )
+                except DataError:  # integer out of range
+                    Hospital.objects.create(
+                        provider_id=int(datum[0]),
+                        name=datum[1],
+                        address=datum[2],
+                        city=datum[3],
+                        state=datum[4],
+                        zip_code=int(datum[5]),
+                        county_name=datum[6],
+                        phone_number=0,
+                        quality=string_to_float(datum[8]),
+                        atmosphere=string_to_float(datum[9]),
+                        price=string_to_float(datum[10]),
+                    )
         return render(request, 'upload_csv.html', {'done': True})
     return render(request, 'upload_csv.html', {'done': False})
