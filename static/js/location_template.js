@@ -70,7 +70,9 @@ function initialize() {
               } else {
                   icon_url = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569";
               }
-              if (list_from_json[i]['lat'] != 0 || list_from_json[i]['lat']) {
+              if (list_from_json[i]['lat'] != 0 || list_from_json[i]['lng']) {
+                  console.log(list_from_json[i]['lat']);
+                  console.log(list_from_json[i]['lng']);
                   var marker = new google.maps.Marker({
                       position: new google.maps.LatLng(list_from_json[i]['lat'], list_from_json[i]['lng']),
                       map: map,
