@@ -64,11 +64,17 @@ function initialize() {
               var letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i];
               total_lat += list_from_json[i]['lat'];
               total_lng += list_from_json[i]['lng'];
+              var icon_url;
+              if (i < 20) {
+                  icon_url = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + (i+1) + "|FF0000|000000";
+              } else {
+                  icon_url = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569";
+              }
               var marker = new google.maps.Marker({
                   position: new google.maps.LatLng(list_from_json[i]['lat'], list_from_json[i]['lng']),
                   map: map,
                   title: 'tooltip text',
-                  icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + (i+1) + "|FF0000|000000"
+                  icon: icon_url
               });
               /*
               google.maps.event.addListener(marker, 'click', function () {
