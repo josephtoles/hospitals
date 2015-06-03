@@ -70,12 +70,14 @@ function initialize() {
               } else {
                   icon_url = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569";
               }
-              var marker = new google.maps.Marker({
-                  position: new google.maps.LatLng(list_from_json[i]['lat'], list_from_json[i]['lng']),
-                  map: map,
-                  title: 'tooltip text',
-                  icon: icon_url
-              });
+              if (list_from_json[i]['lat'] != 0 || list_from_json[i]['lat']) {
+                  var marker = new google.maps.Marker({
+                      position: new google.maps.LatLng(list_from_json[i]['lat'], list_from_json[i]['lng']),
+                      map: map,
+                      title: 'tooltip text',
+                      icon: icon_url
+                  });
+              }
               /*
               google.maps.event.addListener(marker, 'click', function () {
                 var infowindow = new google.maps.InfoWindow({ content: 'hospital info' });
