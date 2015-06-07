@@ -55,24 +55,5 @@ def home(request):
     return render(request, 'search.html', context)
 
 
-def map(request):
-    context = {'hospitals': Hospital.objects.filter(lat__gt=0, lng__lt=0).all()}
-    return render(request, 'location.html', context)
-    # return render(request, 'map.html')
-
-
-def top(request):
-    context = {'hospitals': Hospital.objects.order_by('quality', 'atmosphere', 'price').all()}
-    return render(request, 'top.html', context)
-
-
-def nerd_stuff(request):
-    return render(request, 'nerd_stuff.html')
-
-
-def news(request):
-    return render(request, 'news.html')
-
-
 def about(request):
     return render(request, 'about.html')
