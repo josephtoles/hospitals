@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.db.utils import DataError
 from django.forms.models import model_to_dict
 from models import Hospital
@@ -25,8 +26,12 @@ def get_json(request):
     return HttpResponse(string, content_type='application/json')
 
 
-
 def upload_csv(request):
+    if request.user.is_authenticated():
+        if not request.user.is_staff:
+            return HttpResponseForbidden()
+    else:
+        return HttpResponseRedirect('/admin/login/?next=%s' % reverse('upload_csv'))  # TODO clean this up
     if request.method == 'POST':
         csvfile = request.FILES['datafile']
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
