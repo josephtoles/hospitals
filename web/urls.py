@@ -7,4 +7,5 @@ urlpatterns = patterns(
     url(r'^disclaimer', 'disclaimer', name='disclaimer'),
     url(r'^hospital/(?P<id>[0-9]+)', 'hospital', name='hospital'),
     url(r'^about', 'about', name='about'),
+    url(r'^test', 'test', name='test'),
 )

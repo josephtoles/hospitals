@@ -8,6 +8,15 @@ body{
     padding-top: 80px;
 }
 
+form {
+    display: inline;
+}
+
+.form-control {
+    display: inline;
+    /*margin-top: 55px;*/
+}
+
 #map_canvas {
   margin-top: 50px;
   height: 600px;
@@ -15,8 +24,14 @@ body{
 }
 
 .ui-logo{
-    margin-top: -5px;
     color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.search-bar{
+    color: white;
+    margin-left: 15px;
 }
 
 .navbar-default .navbar-nav>li>a{

@@ -2,31 +2,6 @@
 
 {% block body %}
 
-    <form action="{% url 'home' %}" method="POST">
-        {% csrf_token %}
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    State
-                    <select name="state">
-                        <option value="">ALL</option>
-                        {% for state in states %}
-                            <option value="{{ state }}" {% if state == selected_state %}SELECTED{% endif %}>{{ state }}</option>
-                        {% endfor %}
-                    </select>
-                    City
-                    <select name="city">
-                        <option value="">ALL</option>
-                        {% for city in cities %}
-                            <option value="{{ city }}" {% if city == selected_city %}SELECTED{%endif %}>{{ city }}</option>
-                        {% endfor %}
-                    </select>
-                    <input type="submit" value="Search" class="btn btn-info">
-                </div>
-            </div>
-        </div>
-    </form>
-
     {% if results %}
         <div class="container">
             <div class="row">
