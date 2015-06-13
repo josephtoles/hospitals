@@ -45,16 +45,15 @@ def home(request):
             results_queryset = results_queryset.filter(city=city)
             selected_city = city
         results = results_queryset.all()
+        cities = sorted(set([d['city'] for d in Hospital.objects.values('city')]))
+        context.update({
+            'cities': cities,
+            'results': results,
+            'selected_city': selected_city,
+        })
+        return render(request, 'search.html', context)
     else:
-        results = None
-
-    cities = sorted(set([d['city'] for d in Hospital.objects.values('city')]))
-    context.update({
-        'cities': cities,
-        'results': results,
-        'selected_city': selected_city,
-    })
-    return render(request, 'search.html', context)
+        return render(request, 'home.html', get_default_context())
 
 
 def about(request):
