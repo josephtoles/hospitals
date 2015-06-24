@@ -1,0 +1,65 @@
+/* header height = 10% */
+
+body {
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+#red {
+    color: red;
+	background-color: #3c4543;
+}
+
+.header {
+    color: white;
+    background-color: #1166FF;
+    position: fixed;
+    height: 4em;
+    width: 100%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    display: block;
+    border: 0px;
+}
+
+#logo {
+    color: white;
+    display: inline-block;
+    margin-top: 0.333em;
+    margin-left: 0.5em;
+    font-size: 2em;
+}
+
+#search-box {
+    background-color: green;
+    display: inline;
+    margin-left: 1em;
+}
+
+.results-footer {
+    text-size: 0.5em;
+    clear: both;
+    float: left;
+    width: 50%;
+    background-color: #23fa13;
+}
+
+.results {
+    float: left;
+    width: 40%;
+    background-color: orange;
+    margin-top: 4em;
+}
+
+.map {
+    float: right;
+    width: 60%;
+    height: 100%;
+    background-color: yellow;
+    margin-top: 4em;
+    margin-left: 40%;
+    position: fixed;
+    color: #FFFFF2;
+    border: 0px;
+    display: block;
+}

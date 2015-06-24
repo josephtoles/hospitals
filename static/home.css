@@ -29,6 +29,14 @@ form {
     font-weight: bold;
 }
 
+
+.ui-logo:link{
+    color: white;
+    text-decoration: none;
+    font-weight: bold
+}
+
+
 .search-bar{
     color: white;
     margin-left: 15px;
