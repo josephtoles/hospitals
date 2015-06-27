@@ -3,11 +3,14 @@ from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbid
 from django.core.urlresolvers import reverse
 from django.db.utils import DataError
 from django.forms.models import model_to_dict
+from django.utils.timezone import now
 from models import Hospital
 import csv
 import json
+import pytz
 
 
+# Gets data for AJAX JavaScript
 def get_json(request):
     #TODO remove code duplication
     city = request.GET.get('city', None)
@@ -24,6 +27,54 @@ def get_json(request):
     dict_results = [model_to_dict(result) for result in results]
     string = json.dumps(dict_results)
     return HttpResponse(string, content_type='application/json')
+
+
+# Generates a CSV of the data in the server
+def download_csv(request):
+    if request.user.is_authenticated():
+        if not request.user.is_staff:
+            return HttpResponseForbidden()
+    else:
+        return HttpResponseRedirect('/admin/login/?next=%s' % reverse('upload_csv'))  # TODO clean this up
+    response = HttpResponse(content_type='text/csv')
+    timestamp = now().astimezone(pytz.timezone('America/Los_Angeles')).strftime('%Y-%m-%d_T%H-%M-%S')
+    filename = 'Hospital_data_{timestamp}.csv'.format(timestamp=timestamp)
+    response['Content-Disposition'] = 'attachment; filename="{filename}"'.format(filename=filename)
+    CORRECT_VALUES = [
+        'Provider ID',
+        'Hospital Name',
+        'Address',
+        'City',
+        'State',
+        'ZIP Code',
+        'County Name',
+        'Phone Number',
+        'Quality',
+        'Atmosphere',
+        'Price',
+        'lat',
+        'lng',]
+
+    writer = csv.writer(response)
+    writer.writerow([value for value in CORRECT_VALUES])
+    for hospital in Hospital.objects.all():
+        writer.writerow([
+            hospital.provider_id,
+            hospital.name,
+            hospital.address,
+            hospital.city,
+            hospital.state,
+            hospital.zip_code,
+            hospital.county_name,
+            hospital.phone_number,
+            hospital.quality,
+            hospital.atmosphere,
+            hospital.price,
+            hospital.lat,
+            hospital.lng,
+        ])
+
+    return response
 
 
 def upload_csv(request):
