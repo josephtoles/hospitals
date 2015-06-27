@@ -111,6 +111,7 @@ a:hover{
 #hospital-quality {
     display: inline-block;
     font-size: 2em;
+    width: 1em;
     margin-left: 0.5em;
     margin-below: 0.1em;
     float: left;
