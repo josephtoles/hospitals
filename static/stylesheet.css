@@ -5,6 +5,15 @@ body {
     font-family: sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
 #red {
     color: red;
 	background-color: #3c4543;
@@ -36,6 +45,12 @@ body {
     margin-left: 1em;
 }
 
+#login-button {
+    background-color: white;
+    color: blue;
+    float: right;
+}
+
 .results-footer {
     text-size: 0.5em;
     clear: both;
@@ -47,7 +62,6 @@ body {
 .results {
     float: left;
     width: 40%;
-    background-color: orange;
     margin-top: 4em;
 }
 
