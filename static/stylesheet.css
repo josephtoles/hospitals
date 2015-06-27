@@ -81,6 +81,20 @@ a:hover{
 }
 
 
+/* hospital page */
+.hospital-name {
+    font-size: 2em;
+}
+
+.hospital-address {
+    font-size: 1em;
+}
+
+.hospital-phone {
+    font-size: 1em;
+}
+
+
 /* search results */
 
 .results {

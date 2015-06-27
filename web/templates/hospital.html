@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <h3>{{ hospital.name.title }}</h3>
-                <h4>{{ hospital.address.title }}</h4>
-                <h4>{{ hospital.city.title }}, {{ hospital.state }} {{ hospital.zip_code }}</h4>
-            </div>
-        </div>
+    <div class="hospital-name">
+        {{ hospital.name.title }}
+    </div>
+    <div class="hospital-address">
+        {{ hospital.address.title }}, {{ hospital.city.title }}, {{ hospital.state }} {{ hospital.zip_code }}
+    </div>
+    <div class="hospital-phone">
+        Phone: {{ hospital.phone_number }}
     </div>
 {% endblock %}
