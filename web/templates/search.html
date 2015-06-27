@@ -12,21 +12,19 @@
     </head>
     <body>
         <div class="header">
-            <div id="logo">
+            <div id="logo" href="{% url 'home' %}">
                 Informed.Care
             </div>
-            <div id="search-box">
-                search box 1
-            </div>
-            <div id="search-box">
-                search box 2
-            </div>
-            <div id="search-box">
-                search box 3
-            </div>
-            <div id="search-box">
-                search box 4
-            </div>
+            <form action="{% url 'home' %}" method="POST" style='display:inline;'>
+                {% csrf_token %}
+                <select id="search-box" name="city" style="width: 250px">
+                    <option value="">ALL</option>
+                    {% for city in cities %}
+                        <option value="{{ city }}" {% if city == selected_city %}SELECTED{%endif %}>{{ city }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Search">
+            </form>
         </div>
         <div class="results">
             {% for hospital in results %}
