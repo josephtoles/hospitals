@@ -12,8 +12,10 @@
     </head>
     <body>
         <div class="header">
-            <div id="logo" href="{% url 'home' %}">
-                Informed.Care
+            <div id="logo">
+                <a href="{% url 'home' %}">
+                    Informed.Care
+                </a>
             </div>
             <form action="{% url 'home' %}" method="POST" style='display:inline;'>
                 {% csrf_token %}

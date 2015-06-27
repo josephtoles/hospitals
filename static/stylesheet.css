@@ -39,6 +39,11 @@ a:hover{
     font-size: 2em;
 }
 
+#logo a {
+    color: white;
+    text-decoration: none;
+}
+
 #search-box {
     display: inline;
     margin-left: 1em;
@@ -60,7 +65,7 @@ a:hover{
 
 .results {
     float: left;
-    width: 40%;
+    width: 45%;
     margin-top: 4em;
 }
 
@@ -69,11 +74,11 @@ a:hover{
 
 .map {
     float: right;
-    width: 60%;
+    width: 55%;
     height: 100%;
     background-color: yellow;
     margin-top: 4em;
-    margin-left: 40%;
+    margin-left: 45%;
     position: fixed;
     border: 0px;
     display: block;
