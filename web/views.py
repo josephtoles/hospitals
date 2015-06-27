@@ -58,8 +58,3 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html', get_default_context())
-
-
-# Just to make testing easier
-def test(request):
-    return render(request, 'test_template.html', get_default_context())
