@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <a href="{% url 'disclaimer' %}">Disclaimer</a>
-    <a href="{% url 'about' %}">About</a>
-    <a href="{% url 'contact' %}">Contact</a>
+
+{% endblock %}
+
+{% block footer %}
+    <div class="footer">
+        <a href="{% url 'disclaimer' %}">Disclaimer</a>
+        &middot;
+        <a href="{% url 'about' %}">About</a>
+        &middot;
+        <a href="{% url 'contact' %}">Contact</a>
+    </div>
 {% endblock %}

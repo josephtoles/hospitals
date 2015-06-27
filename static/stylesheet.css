@@ -58,6 +58,12 @@ a:hover{
     float: right;
 }
 
+/* footer (different from search results footer) */
+.footer {
+    text-align: center;
+}
+
+
 /* search results */
 
 .results {
