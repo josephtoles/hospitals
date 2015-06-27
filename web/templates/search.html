@@ -31,34 +31,31 @@
         <div class="results">
             {% for hospital in results %}
                 <div class="hospital-result">
-                    <div id="hospital-index">
-                        {{ forloop.counter }}.
-                    </div>
-                    <div class="hospital-result-data">
+                    <div>
+                        <div id="hospital-index">
+                            {{ forloop.counter }}.
+                        </div>
                         <div id="hospital-name">
                             <a href="{% url 'hospital' id=hospital.id %}">{{ hospital.name.title }}</a>
                         </div>
+                    </div>
+                    <div class="hospital-result-data">
                         <div id="hospital-quality">
-                            {% if hospital.quality %}{{ hospital.round_quality }}{% else %}Unknown{% endif %}
+                            {% if hospital.quality %}{{ hospital.round_quality }}{% else %}?{% endif %}
                         </div>
-                        <table id="hospital-stats">
-                            <tr>
-                                <td>
-                                    {% if hospital.atmosphere %}{{ hospital.round_atmosphere }}{% else %}Unknown{% endif %}
-                                </td>
-                                <td>
-                                    Atmosphere
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    {% if hospital.price %}{{ hospital.round_price }}{% else %}Unknown{% endif %}
-                                </td>
-                                <td>
-                                    Price
-                                </td>
-                            </tr>
-                        </table>
+                        <div id="value">
+                            {% if hospital.atmosphere %}{{ hospital.round_atmosphere }}{% else %}Unknown{% endif %}
+                        </div>
+                        <div id="key">
+                            Atmosphere
+                        </div>
+                        <br>
+                        <div id="value">
+                            {% if hospital.price %}{{ hospital.round_price }}{% else %}Unknown{% endif %}
+                        </div>
+                        <div id="key">
+                            Price
+                        </div>
                     </div>
                 </div>
             {% endfor %}
@@ -67,8 +64,6 @@
             <div id="map-canvas" city="{{ selected_city }}" state="{{ selected_state }}"></div>
         </div>
 
-
-
-        <div class="results-footer">Footer</div>
+        <div class="results-footer">{# insert text here as needed #}</div>
     </body>
 </html>

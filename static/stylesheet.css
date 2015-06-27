@@ -69,29 +69,47 @@ a:hover{
 .hospital-result {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-}
-
-.hospital-result-data {
-    display: inline-block;
+    margin-left: 2em;
 }
 
 #hospital-index {
     display: inline;
     color: grey;
     width: 2em;
-    margin-left: 1.5em;
 }
 
 #hospital-name {
+    display: inline;
+}
 
+.hospital-result-data {
+    display: inline-block;
 }
 
 #hospital-quality {
-    display: inline;
+    display: inline-block;
+    font-size: 2em;
+    margin-left: 0.5em;
+    margin-below: 0.1em;
+    float: left;
 }
 
 #hospital-stats {
+    display: inline-block;
+    margin: 0px;
+    float: left;
+}
+
+#key {
     display: inline;
+    float: left;
+}
+
+#value {
+    width: 2em;
+    display: inline;
+    float: left;
+    margin-left: 1em;
 }
 
 .results-footer {
@@ -99,7 +117,6 @@ a:hover{
     clear: both;
     float: left;
     width: 50%;
-    background-color: #23fa13;
 }
 
 /* map */
