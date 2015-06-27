@@ -64,6 +64,23 @@ a:hover{
 }
 
 
+/* homepage */
+.headline {
+    font-size: 3em;
+    width: 50%;
+    margin: 1em auto 1em auto;
+    display: block;
+}
+
+.sub-headline {
+    font-size: 2em;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 2em;
+    display: block;
+}
+
+
 /* search results */
 
 .results {
