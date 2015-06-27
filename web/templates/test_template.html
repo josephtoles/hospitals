@@ -1,100 +1,31 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <link type="text/css" rel="stylesheet" href="{% static "stylesheet.css" %}"/>
-        <title>Test Page</title>
-    </head>
-    <body>
-        <div class="header">
-            <div id="logo">
-                Informed.Care
-            </div>
-            <div id="search-box">
-                search box 1
-            </div>
-            <div id="search-box">
-                search box 2
-            </div>
-            <div id="search-box">
-                search box 3
-            </div>
-            <div id="search-box">
-                search box 4
-            </div>
-        </div>
-        <div class="results">
-            <p>First result</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-            <p>Results</p>
-        </div>
-        <div class="map">
-            Map
-        </div>
-        <div class="results-footer">Footer</div>
-    </body>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+var map;
+function initialize() {
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+    zoom: 8,
+    center: {lat: -34.397, lng: 150.644}
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div height=600px width=600px id="map-canvas"></div>
+  </body>
 </html>

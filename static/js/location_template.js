@@ -1,6 +1,6 @@
 function initialize() {
 
-  var scriptPram = document.getElementById('map_canvas');
+  var scriptPram = document.getElementById('map-canvas');
   var state = scriptPram.getAttribute('state');
   if (state === 'None') {
       state = '';
@@ -16,7 +16,7 @@ function initialize() {
     zoom:8,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
   var siberia = new google.maps.LatLng(37.625364,-122.423905);
   /*
@@ -91,7 +91,7 @@ function initialize() {
       var center_lat = total_lat / list_from_json.length;
       var center_lng = total_lng / list_from_json.length;
       map.setCenter(new google.maps.LatLng(center_lat, center_lng));
-};
+  };
   xobj.send(null);
 
 }

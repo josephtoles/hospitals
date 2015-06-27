@@ -51,6 +51,9 @@ body {
     margin-top: 4em;
 }
 
+.hospital-result {
+}
+
 .map {
     float: right;
     width: 60%;
@@ -59,7 +62,12 @@ body {
     margin-top: 4em;
     margin-left: 40%;
     position: fixed;
-    color: #FFFFF2;
     border: 0px;
     display: block;
+}
+
+#map-canvas {
+    height: 100%;
+    width: 100%;
+    background-color: #808080;
 }
