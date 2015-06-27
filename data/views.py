@@ -77,7 +77,15 @@ def download_csv(request):
     return response
 
 
-def upload_csv(request):
+def upload_csv_with_coordinates(request):
+    return upload_csv(request, True)
+
+
+def upload_csv_without_coordinates(request):
+    return upload_csv(request, False)
+
+
+def upload_csv(request, include_coordinates):
     if request.user.is_authenticated():
         if not request.user.is_staff:
             return HttpResponseForbidden()
@@ -99,6 +107,9 @@ def upload_csv(request):
             'Quality',
             'Atmosphere',
             'Price']
+        if include_coordinates:
+            CORRECT_VALUES.append('lat')
+            CORRECT_VALUES.append('lng')
         if listified[0] != CORRECT_VALUES:
             return HttpResponseBadRequest()
 
@@ -123,6 +134,9 @@ def upload_csv(request):
                 hospital.quality=string_to_float(datum[8])
                 hospital.atmosphere=string_to_float(datum[9])
                 hospital.price=string_to_float(datum[10])
+                if include_coordinates:
+                    hospital.lat=string_to_float(datum[11])
+                    hospital.lng=string_to_float(datum[12])
                 hospital.save()
             except Hospital.DoesNotExist:
                 try:
@@ -138,6 +152,8 @@ def upload_csv(request):
                         quality=string_to_float(datum[8]),
                         atmosphere=string_to_float(datum[9]),
                         price=string_to_float(datum[10]),
+                        lat=string_to_float(datum[11]),
+                        lng=string_to_float(datum[12]),
                     )
                 except DataError:  # integer out of range
                     Hospital.objects.create(
@@ -152,6 +168,8 @@ def upload_csv(request):
                         quality=string_to_float(datum[8]),
                         atmosphere=string_to_float(datum[9]),
                         price=string_to_float(datum[10]),
+                        lat=string_to_float(datum[11]),
+                        lng=string_to_float(datum[12]),
                     )
         return render(request, 'upload_csv.html', {'done': True})
     return render(request, 'upload_csv.html', {'done': False})

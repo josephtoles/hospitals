@@ -9,7 +9,21 @@
         <form action="{% url 'upload_csv' %}" enctype="multipart/form-data" method="post">
             {% csrf_token %}
             <p>
-                Select CSV (without coordinates) to upload.
+                Select CSV (WITHOUT coordinates) to upload.
+            </p>
+            <p>
+                Warning: This will erase all existing hospital data in the database!
+            </p>
+
+            <input type="file" name="datafile" size="40">
+            <div>
+                <input type="submit" value="Send">
+            </div>
+        </form>
+        <form action="{% url 'upload_csv_with_coordinates' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <p>
+                Select CSV (WITH coordinates) to upload.
             </p>
             <p>
                 Warning: This will erase all existing hospital data in the database!
