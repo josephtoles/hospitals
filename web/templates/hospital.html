@@ -1,13 +1,37 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <div class="hospital-name">
-        {{ hospital.name.title }}
+    <div class="hospital-page">
+        <div class="hospital-name">
+            {{ hospital.name.title }}
+        </div>
+
+        <div>
+            <div id="hospital-quality">
+                {% if hospital.quality %}{{ hospital.round_quality }}{% else %}?{% endif %}
+            </div>
+            <div id="value">
+                {% if hospital.atmosphere %}{{ hospital.round_atmosphere }}{% else %}Unknown{% endif %}
+            </div>
+            <div id="key">
+                Atmosphere
+            </div>
+            <br>
+            <div id="value">
+                {% if hospital.price %}{{ hospital.round_price }}{% else %}Unknown{% endif %}
+            </div>
+            <div id="key">
+                Price
+            </div>
+        </div>
+
+        <div class="hospital-address">
+            {{ hospital.address.title }}, {{ hospital.city.title }}, {{ hospital.state }} {{ hospital.zip_code }}
+        </div>
+        <div class="hospital-phone">
+            Phone: {{ hospital.phone_number }}
+        </div>
+
     </div>
-    <div class="hospital-address">
-        {{ hospital.address.title }}, {{ hospital.city.title }}, {{ hospital.state }} {{ hospital.zip_code }}
-    </div>
-    <div class="hospital-phone">
-        Phone: {{ hospital.phone_number }}
-    </div>
+
 {% endblock %}
