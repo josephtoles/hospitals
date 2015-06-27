@@ -1,33 +1,6 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <link type="text/css" rel="stylesheet" href="{% static "stylesheet.css" %}"/>
-        <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/><title>Test Page</title>
+{% extends 'base.html' %}
 
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-{#        <script type="text/javascript" src="{% static 'js/test_map.js' %}"></script>#}
-        <script type="text/javascript" src="{% static 'js/location_template.js' %}"></script>
-
-    </head>
-    <body>
-        <div class="header">
-            <div id="logo">
-                <a href="{% url 'home' %}">
-                    Informed.Care
-                </a>
-            </div>
-            <form action="{% url 'home' %}" method="POST" style='display:inline;'>
-                {% csrf_token %}
-                <select id="search-box" name="city" style="width: 250px">
-                    <option value="">ALL</option>
-                    {% for city in cities %}
-                        <option value="{{ city }}" {% if city == selected_city %}SELECTED{%endif %}>{{ city }}</option>
-                    {% endfor %}
-                </select>
-                <input type="submit" value="Search">
-            </form>
-        </div>
+{% block body %}
         <div class="results">
             {% for hospital in results %}
                 <div class="hospital-result">
@@ -65,5 +38,4 @@
         </div>
 
         <div class="results-footer">{# insert text here as needed #}</div>
-    </body>
-</html>
+{% endblock %}
