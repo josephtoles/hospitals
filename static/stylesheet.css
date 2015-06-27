@@ -157,6 +157,16 @@ a:hover{
     margin-bottom: 0.5em;
 }
 
+.single-hospital-map {
+    height: 500px;
+    width: 500px;
+}
+
+#single-hospital-map-canvas {
+    height: 100%;
+    width: 100%;
+}
+
 
 /* search results */
 
@@ -225,7 +235,6 @@ a:hover{
     float: right;
     width: 55%;
     height: 100%;
-    background-color: yellow;
     margin-left: 45%;
     position: fixed;
     border: 0px;
@@ -235,5 +244,4 @@ a:hover{
 #map-canvas {
     height: 100%;
     width: 100%;
-    background-color: #808080;
 }
