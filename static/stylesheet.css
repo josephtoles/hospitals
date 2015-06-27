@@ -80,6 +80,56 @@ a:hover{
     display: block;
 }
 
+/* About and disclaimer */
+.page-of-text {
+    width: 40em;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+}
+
+/* contact page */
+.contact {
+    width: 30em;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-header {
+    font-size: 2em;
+    text-align: center;
+}
+
+.contact label {
+    display: block;
+    text-align: center;
+    font-size: 1.3em;
+    margin-top: 1em;
+}
+
+.contact .email-box {
+    width: 100%;
+}
+
+.contact textarea {
+    width: 100%;
+}
+
+.contact .send {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    /*font-size: 1.3em;*/
+}
+
+.contact input[type=submit] {
+    font-size: 1000em;
+    width: 20%;
+    /*height: 20em;*/
+}
+
 
 /* hospital page */
 .hospital-page {
