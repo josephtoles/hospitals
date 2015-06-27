@@ -1,4 +1,4 @@
-/* header height = 10% */
+/* general */
 
 body {
     margin: 0px;
@@ -14,10 +14,13 @@ a:hover{
     text-decoration: underline;
 }
 
-#red {
-    color: red;
-	background-color: #3c4543;
+.page {
+    float: left;
+    width: 100%;
+    margin-top: 4em;
 }
+
+/* header */
 
 .header {
     color: white;
@@ -55,6 +58,42 @@ a:hover{
     float: right;
 }
 
+/* search results */
+
+.results {
+    float: left;
+    width: 45%;
+    margin-top: 4em;
+}
+
+.hospital-result {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.hospital-result-data {
+    display: inline-block;
+}
+
+#hospital-index {
+    display: inline;
+    color: grey;
+    width: 2em;
+    margin-left: 1.5em;
+}
+
+#hospital-name {
+
+}
+
+#hospital-quality {
+    display: inline;
+}
+
+#hospital-stats {
+    display: inline;
+}
+
 .results-footer {
     text-size: 0.5em;
     clear: both;
@@ -63,20 +102,7 @@ a:hover{
     background-color: #23fa13;
 }
 
-.results {
-    float: left;
-    width: 45%;
-    margin-top: 4em;
-}
-
-.page {
-    float: left;
-    width: 100%;
-    margin-top: 4em;
-}
-
-.hospital-result {
-}
+/* map */
 
 .map {
     float: right;

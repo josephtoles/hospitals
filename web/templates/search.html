@@ -31,16 +31,35 @@
         <div class="results">
             {% for hospital in results %}
                 <div class="hospital-result">
-                    {{ forloop.counter }}. <a href="{% url 'hospital' id=hospital.id %}">{{ hospital.name.title }}</a>
-                    <p>
-                        Quality: {% if hospital.quality %}{{ hospital.round_quality }}{% else %}Unknown{% endif %}
-                    </p>
-                    <p>
-                        Atmosphere: {% if hospital.atmosphere %}{{ hospital.round_atmosphere }}{% else %}Unknown{% endif %}
-                    </p>
-                    <p>
-                        Price: {% if hospital.price %}{{ hospital.round_price }}{% else %}Unknown{% endif %}
-                    </p>
+                    <div id="hospital-index">
+                        {{ forloop.counter }}.
+                    </div>
+                    <div class="hospital-result-data">
+                        <div id="hospital-name">
+                            <a href="{% url 'hospital' id=hospital.id %}">{{ hospital.name.title }}</a>
+                        </div>
+                        <div id="hospital-quality">
+                            {% if hospital.quality %}{{ hospital.round_quality }}{% else %}Unknown{% endif %}
+                        </div>
+                        <table id="hospital-stats">
+                            <tr>
+                                <td>
+                                    {% if hospital.atmosphere %}{{ hospital.round_atmosphere }}{% else %}Unknown{% endif %}
+                                </td>
+                                <td>
+                                    Atmosphere
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {% if hospital.price %}{{ hospital.round_price }}{% else %}Unknown{% endif %}
+                                </td>
+                                <td>
+                                    Price
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             {% endfor %}
         </div>
