@@ -1,11 +1,6 @@
 function initialize() {
 
   var scriptPram = document.getElementById('map-canvas');
-  var state = scriptPram.getAttribute('state');
-  if (state === 'None') {
-      state = '';
-  }
-  console.log(state);
   var city = scriptPram.getAttribute('city');
   if (city === 'None') {
       city = '';
@@ -18,15 +13,7 @@ function initialize() {
   };
   var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
-  var siberia = new google.maps.LatLng(37.625364,-122.423905);
   /*
-
-  var marker =  new google.maps.Marker({
-    position: siberia,
-    map: map,
-    title: "omt"
-  });
-
   var infowindow = new google.maps.InfoWindow({
       content: "some info for the window"
   });
@@ -34,9 +21,7 @@ function initialize() {
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map,marker);
   });
-  */
 
-  /*
   var mapLabel = new google.maps.MapLabel({
          text: 'Test',
          position: new google.maps.LatLng(50,50),
@@ -46,10 +31,9 @@ function initialize() {
   });
   */
 
-  map.setCenter(siberia);
   var xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
-  var target_url = 'data/get_json?city=' + city + '&state=' + state;
+  var target_url = 'data/get_json?city=' + city;
     console.log(target_url);
   xobj.open('GET', target_url, true);
   xobj.onreadystatechange = function () {
