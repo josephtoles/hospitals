@@ -137,7 +137,14 @@ def upload_csv(request, include_coordinates):
                 if include_coordinates:
                     hospital.lat=string_to_float(datum[11])
                     hospital.lng=string_to_float(datum[12])
-                hospital.save()
+                try:
+                    hospital.save()
+                except DataError:  # integer out or range
+                    if hospital.zip_code > hospital.phone_number:
+                        hospital.zip_code = 0
+                    else:
+                        hospital.phone_number = 0
+                    hospital.save()
             except Hospital.DoesNotExist:
                 try:
                     Hospital.objects.create(
