@@ -3,44 +3,30 @@
 {% block body %}
     <div class="page-of-text">
         <h1>About Us</h1>
-        <h2>
-            Who are you?
-        </h2>
         <p>
-            We're a couple hackers who wanted to make it easy to compare hospitals based on a couple
-            simple benchmarks.
+            In 2013, a landmark study estimated patient deaths in American hospitals due to preventable harm at over
+            210,000 deaths per year<sup><a href="#fn1" id="ref1">1</a></sup>, roughly the number of American soldiers
+            killed in the entire Vietnam War. Many
+            studies put the death toll even higher. Led only by heart disease and cancer, it seems that hospitals are
+            the third leading cause of death in the United States, surpassing stroke, diabetes, Alzheimer’s, and all
+            other forms of accident<sup><a href="#fn2" id="ref2">2</a></sup>. Uncounted other patients are crippled or
+            maimed every day due to preventable infections, medicinal side effects, and unnecessary surgeries.
         </p>
-        <h2>
-            Aren't all hospitals the same?
-        </h2>
         <p>
-            No. Not even close. There are countless studies about how you're ten times as likely to survive
-            surgery at one hospital versus another, and how medical staff are often scared to receive surgery at
-            the hospital they work at because they see what goes on there. But statistics are boring. John
-            Oliver can explain, in much more vivid detail, one particularly egregious problem.
+            While the root causes of these issues are undoubtedly complex, we believe patients have a right to
+            information. We aim to make choosing which hospital is best for you as clear as possible, based thousands of
+            datasets made available under the Affordable Care Act. We’ll be with you all the way to the operating room.
         </p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/YQZ2UeOTO3I" frameborder="0" allowfullscreen></iframe>
-        <h2>
-            Where does this data come from?
-        </h2>
-        <p>
-            US government open data sets. Thanks Obama! Hospitals have their own data that is much more
-            accurate than the data we use for this website but they keep it tightly under wraps because
-            this somehow isn't illegal. Meanwhile, most hospital and doctor rating systems <i>[cough]</i>
-            US News & World Report <i>[cough]</i> are based off of surveys instead of patient outcomes. In other
-            words, it doesn't matter whether your patients survive the surgery they perform; what matters
-            is the doctors' bedside manner in informing your relatives of your untimely death from an
-            unnecessary surgery.
-        </p>
-        <h2>
-            What algorithm do you use?
-        </h2>
-        <p>
-            Our algorithm is still under development. We will publish it as soon as we can. The "Safety" score
-            is based off of objective patient outcomes, such as survival rate. The "Comfort" score is based on
-            subjective patient reviews. As you can see they don't often agree. In the meantime, if you're a
-            specialist in the field and would like to provide input, please
-            <a href="{% url 'contact' %}">get in touch</a>.
-        </p>
+        <div class="footnotes">
+            <sup id="fn1">
+                1. CDC. Deaths and Mortality. 2015. http://www.cdc.gov/nchs/fastats/deaths.htm. Accessed July 1, 2015.
+                <a href="#ref1" title="Jump back to footnote 1 in the text.">↩</a>
+            </sup>
+            <sup id="fn2">
+                2. James JT. A New, Evidence-Based Estimate of Patient Harms Associated with Hospital Care. Journal of
+                Patient Safety. 2013;9.
+                <a href="#ref2" title="Jump back to footnote 2 in the text.">↩</a>
+            </sup>
+        </div>
     </div>
 {% endblock %}
